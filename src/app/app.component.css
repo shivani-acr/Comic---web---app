@@ -1,0 +1,19 @@
+.example-container{
+    float: left;
+    margin: 2rem;
+    margin-bottom: 0rem;
+}
+.align-container{
+    display: block;
+    margin: 1rem;
+    float: left;
+}
+.image-container{
+    float: left;
+    margin: 2 rem;
+}
+img {
+    width: 50%;
+    height: 50%;
+}
+
