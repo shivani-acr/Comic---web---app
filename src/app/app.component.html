@@ -1,40 +1,37 @@
-<div class="cont"><h2 style="margin: 2rem;color:rgb(25, 25, 197);font-style:Roboto;margin-bottom:0rem ">CREATE A COMIC BY ENTERING TEXT
-</h2>
-<h3 style="margin-left: 2rem;color:rgb(85, 85, 231);font-style:Roboto;margin-bottom:0rem"> -- Each textbox corresponds
-  to one picture</h3>
-<h3 style="margin-left: 2rem;color:rgb(85, 85, 231);font-style:Roboto;margin-bottom:0rem"> -- You can create at maximum
-  10 pictures</h3>
+<div class="cont">
+  <h2 style="margin: 2rem;color:rgb(25, 25, 197);font-style:Roboto;margin-bottom:0rem ">CREATE A COMIC BY ENTERING TEXT
+  </h2>
+  <h3 style="margin-left: 2rem;color:rgb(85, 85, 231);font-style:Roboto;margin-bottom:0rem"> -- Each textbox corresponds
+    to one picture</h3>
+  <h3 style="margin-left: 2rem;color:rgb(85, 85, 231);font-style:Roboto;margin-bottom:0rem"> -- You can create at
+    maximum
+    10 pictures</h3>
 
-<form [formGroup]="form">
-  <div class="example-container" *ngFor="let control of  rolesFieldAsFormArray.controls ;let i = index;"
-    formArrayName='roles'>
-    <div [formGroupName]="i">
-      <div class="input-field">
-        <mat-form-field appearance="outline">
-          <mat-label>Enter text for picture</mat-label>
-          <textarea matInput type="text" [placeholder]="'Input ' + (i + 1)" formControlName="role"></textarea>
-          <mat-error *ngIf="rolesFieldAsFormArray.controls[i].get('role').invalid && (rolesFieldAsFormArray.controls[i].get('role').dirty || rolesFieldAsFormArray.controls[i].get('role').touched)">required</mat-error>
-        </mat-form-field>
-      </div>
-      <!-- <div>
+  <form [formGroup]="form">
+    <div class="example-container" *ngFor="let control of  rolesFieldAsFormArray.controls ;let i = index;"
+      formArrayName='roles'>
+      <div [formGroupName]="i">
+        <div class="input-field">
+          <mat-form-field style="width: 25rem ;" appearance="outline">
+            <mat-label>Enter text for picture</mat-label>
+            <textarea matInput type="text" [placeholder]="'Input ' + (i + 1)" formControlName="role"></textarea>
+            <mat-error
+              *ngIf="rolesFieldAsFormArray.controls[i].get('role').invalid && (rolesFieldAsFormArray.controls[i].get('role').dirty || rolesFieldAsFormArray.controls[i].get('role').touched)">required</mat-error>
+          </mat-form-field>
+        </div>
+        <!-- <div>
       <button class="button" type="button" (click)="remove(i)">Remove</button>
     </div> -->
+      </div>
     </div>
-  </div>
-  <div class="align-container">
     <button style="margin: 2rem;" mat-raised-button color="primary" class="button" (click)="addControl()"> Add Text
       Box</button>
-    <button style="margin: 2rem;" mat-raised-button color="primary" class="button" type="submit" (click)="fetchImage()"
+  </form>
+  <button style="margin: 2rem; margin-top:0rem" mat-raised-button color="primary" class="button" type="submit" (click)="fetchImage()"
       [disabled]="form.invalid">
       Submit
     </button>
+  <div  *ngFor="let imageUrl of imageUrls">
+    <img [src]="imageUrl" *ngIf="imageUrl" alt="Fetched Image">
   </div>
-  <div>
-    <div class="image-container" *ngFor="let imageUrl of imageUrls">
-      <img [src]="imageUrl" *ngIf="imageUrl" alt="Fetched Image">
-    </div>
-    <!-- Add more images as needed -->
-  </div>
-</form>
-<br>
 </div>
