@@ -3,9 +3,9 @@
     margin-bottom: 0rem;
 }
 img {
-    margin: 1rem;
     width: 25%;
     height: 25%;
     float: left;
+    padding-bottom: 0.1rem;
 }
 

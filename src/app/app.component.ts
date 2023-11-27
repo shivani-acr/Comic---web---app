@@ -8,6 +8,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AppComponent {
   title = 'comic-web-app';
+  times:number = 0;
   imageUrls: (string | ArrayBuffer | null)[] = [];
   constructor(private fb: FormBuilder, private dataService: DataService) {}
   form = this.fb.group({
@@ -32,9 +33,13 @@ export class AppComponent {
 
 
   fetchImage() {
+    this.times = this.times +1;
+    if(this.times>1){
+      return;
+    }
     // console.log(this.form.value)
     const rolesArray = this.form.get('roles') as FormArray;
-    // console.log(rolesArray.length);
+    console.log(rolesArray.length);
     this.imageUrls = [];
     for (let i = 0; i < rolesArray.length; i++) {
       this.dataService.queryImage({ 'inputs': rolesArray.at(i).value.role }).subscribe(
